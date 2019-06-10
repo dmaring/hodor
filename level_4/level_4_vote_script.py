@@ -32,10 +32,10 @@ def hodor_vote():
     }
     hurl = 'http://158.69.76.135/level4.php'
     timeout = 11
-    count = 0
 
     target_votes = 98
-    while scrape_vote_num() < target_votes:
+    current_votes = scrape_vote_num()
+    while current_votes < target_votes:
         scrape_dict = scrape()
         hproxy = dict(http="{}".format(pl.get_proxy()))
         hcookies = scrape_dict['cookies']
@@ -49,8 +49,7 @@ def hodor_vote():
             print(e)
             time.sleep(5)
             continue
-        count += 1
-        print(count)
+        print(current_votes)
         # print(req.text)
 
 if __name__ == '__main__':
